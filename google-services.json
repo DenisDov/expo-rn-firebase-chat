@@ -1,0 +1,37 @@
+{
+  "project_info": {
+    "project_number": "896154469085",
+    "project_id": "expo-rn-firebase-chat",
+    "storage_bucket": "expo-rn-firebase-chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896154469085:android:996f078e98d97b1695d134",
+        "android_client_info": {
+          "package_name": "com.denisdov.expornfirebasechat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7pbP1tbzbkaYGKafamacyl9afdWdAVG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896154469085-fjpu8gfkeg7ps3m3vu7ibtq28rqb2r20.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.denisdov.expornfirebasechat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
