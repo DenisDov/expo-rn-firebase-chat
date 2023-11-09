@@ -6,35 +6,40 @@ import { theme } from "@app/theme";
 
 type Props = {
   onBlur: () => void;
-  onChange: () => void;
+  onChangeText: () => void;
   value: string;
   placeholder: string;
 };
 
-export const AuthInput = ({ onBlur, onChange, value, placeholder }: Props) => {
-  const appTheme = useTheme();
+export const AuthInput = ({
+  onBlur,
+  onChangeText,
+  value,
+  placeholder,
+}: Props) => {
+  const theme = useTheme();
   return (
     <TextInput
       onBlur={onBlur}
-      onChangeText={onChange}
+      onChangeText={onChangeText}
       value={value}
       placeholder={placeholder}
-      // placeholderTextColor={appTheme.colors.inputPlaceholder}
+      placeholderTextColor={theme.colors.text}
       underlineColorAndroid="transparent"
       autoCapitalize="none"
       autoCorrect={false}
-      style={[styles.input, { color: appTheme.colors.primaryText }]}
+      style={[styles.input, { color: theme.colors.text }]}
     />
   );
 };
 
 const styles = StyleSheet.create({
   input: {
-    marginBottom: theme.spacing.xs,
-    fontSize: 18,
-    fontFamily: "Raleway-Regular",
+    fontFamily: "GeistSans",
     height: theme.spacing.xl,
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderWidth: StyleSheet.hairlineWidth,
     borderColor: theme.colors.primary,
+    borderRadius: theme.borderRadii.s,
+    paddingHorizontal: theme.spacing.s,
   },
 });

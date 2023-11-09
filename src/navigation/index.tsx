@@ -27,12 +27,12 @@ function RootNavigator() {
       <PublicStack.Screen
         name="SignIn"
         component={SignInScreen}
-        options={{ title: "Login" }}
+        options={{ title: "Sign In" }}
       />
       <PublicStack.Screen
         name="SignUp"
         component={SignUpScreen}
-        options={{ title: "Register" }}
+        options={{ title: "Sign Up" }}
       />
     </PublicStack.Navigator>
   );

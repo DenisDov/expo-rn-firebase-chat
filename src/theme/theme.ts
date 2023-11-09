@@ -1,18 +1,25 @@
 import { createTheme } from "@shopify/restyle";
+import tinycolor from "tinycolor2";
 
 const palette = {
   black: "#0B0B0B",
   white: "#F0F2F3",
   blue: "#2f95dc",
-  gray: "#808080",
+  // gray: "#808080",
   red: "#D9534F",
+  shadow: "#00000020",
 };
 
 const theme = createTheme({
   colors: {
-    text: palette.black,
-    background: palette.white,
     primary: palette.blue,
+    background: palette.white,
+    text: palette.black,
+
+    btnText: palette.white,
+    primaryActive: tinycolor(palette.blue).darken(10).toString(),
+    shadow: palette.shadow,
+    error: palette.red,
   },
   spacing: {
     xs: 4,

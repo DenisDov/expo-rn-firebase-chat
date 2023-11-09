@@ -125,7 +125,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       dispatch({ type: "LOADING_START" });
       await auth().createUserWithEmailAndPassword(email, password);
     } catch (err: any) {
-      console.log("err: ", err);
       Alert.alert(err.message);
       dispatch({ type: "LOGOUT" });
     }
@@ -136,7 +135,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       dispatch({ type: "LOADING_START" });
       await auth().signInWithEmailAndPassword(email, password);
     } catch (err: any) {
-      console.log("err: ", err.code);
       Alert.alert(err.message);
       dispatch({ type: "LOGOUT" });
     }

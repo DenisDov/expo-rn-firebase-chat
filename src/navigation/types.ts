@@ -13,3 +13,8 @@ export type SignInScreenProps = NativeStackScreenProps<
   PublicStackParamList,
   "SignIn"
 >;
+
+export type SignUpScreenProps = NativeStackScreenProps<
+  PublicStackParamList,
+  "SignUp"
+>;
