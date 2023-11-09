@@ -1,10 +1,9 @@
-import { Text } from "@app/theme";
-import { Shadow } from "react-native-shadow-2";
-import React from "react";
-import { ActivityIndicator, Pressable, StyleSheet } from "react-native";
-import * as Haptics from "expo-haptics";
-
-import { theme } from "@app/theme";
+import { Text } from '@app/theme';
+import { Shadow } from 'react-native-shadow-2';
+import React from 'react';
+import { ActivityIndicator, Pressable, StyleSheet, Image } from 'react-native';
+import * as Haptics from 'expo-haptics';
+import { theme } from '@app/theme';
 
 type Props = {
   onPress: () => void;
@@ -17,7 +16,7 @@ const RIPPLE_CONFIG = {
   borderless: true,
 };
 
-const Button = ({ onPress, title, isLoading }: Props) => {
+export const Button = ({ onPress, title, isLoading }: Props) => {
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     onPress();
@@ -27,15 +26,16 @@ const Button = ({ onPress, title, isLoading }: Props) => {
       startColor={theme.colors.shadow}
       offset={[2, 2]}
       distance={2}
-      style={styles.shadow}
-    >
+      style={styles.shadow}>
       <Pressable
         onPress={handlePress}
         disabled={isLoading}
         hitSlop={16}
         android_ripple={RIPPLE_CONFIG}
-        style={({ pressed }) => [styles.button, { opacity: pressed ? 0.7 : 1 }]}
-      >
+        style={({ pressed }) => [
+          styles.button,
+          { opacity: pressed ? 0.7 : 1 },
+        ]}>
         {isLoading ? (
           <ActivityIndicator color="white" />
         ) : (
@@ -46,17 +46,15 @@ const Button = ({ onPress, title, isLoading }: Props) => {
   );
 };
 
-export { Button };
-
 const styles = StyleSheet.create({
   shadow: {
-    alignSelf: "stretch",
+    alignSelf: 'stretch',
     borderRadius: theme.borderRadii.s,
   },
   button: {
     height: theme.spacing.xl,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: theme.colors.primary,
     borderRadius: theme.borderRadii.s,
   },

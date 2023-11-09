@@ -1,4 +1,4 @@
-import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export type ProtectedStackParamList = {
   Home: undefined;
@@ -11,10 +11,10 @@ export type PublicStackParamList = {
 
 export type SignInScreenProps = NativeStackScreenProps<
   PublicStackParamList,
-  "SignIn"
+  'SignIn'
 >;
 
 export type SignUpScreenProps = NativeStackScreenProps<
   PublicStackParamList,
-  "SignUp"
+  'SignUp'
 >;

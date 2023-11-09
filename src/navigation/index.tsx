@@ -1,16 +1,16 @@
-import * as SplashScreen from "expo-splash-screen";
+import * as SplashScreen from 'expo-splash-screen';
 
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 
-import { HomeScreen } from "@app/screens/protected/home";
+import { HomeScreen } from '@app/screens/protected/home';
 
-import { SignUpScreen } from "@app/screens/public/sign_up";
-import { SignInScreen } from "@app/screens/public/sign_in";
-import { useCallback } from "react";
-import { useLoadedAssets } from "@app/hooks/useLoadedAssets";
-import { useAuth } from "@app/context/auth";
-import { ProtectedStackParamList, PublicStackParamList } from "./types";
+import { SignUpScreen } from '@app/screens/public/sign_up';
+import { SignInScreen } from '@app/screens/public/sign_in';
+import { useCallback } from 'react';
+import { useLoadedAssets } from '@app/hooks/useLoadedAssets';
+import { useAuth } from '@app/context/auth';
+import { ProtectedStackParamList, PublicStackParamList } from './types';
 
 const ProtectedStack = createNativeStackNavigator<ProtectedStackParamList>();
 const PublicStack = createNativeStackNavigator<PublicStackParamList>();
@@ -27,12 +27,12 @@ function RootNavigator() {
       <PublicStack.Screen
         name="SignIn"
         component={SignInScreen}
-        options={{ title: "Sign In" }}
+        options={{ title: 'Sign In' }}
       />
       <PublicStack.Screen
         name="SignUp"
         component={SignUpScreen}
-        options={{ title: "Sign Up" }}
+        options={{ title: 'Sign Up' }}
       />
     </PublicStack.Navigator>
   );

@@ -1,22 +1,22 @@
-import { useAuth } from "@app/context/auth";
-import { Box, Text } from "@app/theme";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { SignUpScreenProps } from "@app/navigation/types";
-import { useForm, Controller } from "react-hook-form";
-import { AuthInput } from "@app/components/AuthInput";
-import { Button } from "@app/components/Button";
+import { useAuth } from '@app/context/auth';
+import { Box, Text } from '@app/theme';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { SignUpScreenProps } from '@app/navigation/types';
+import { useForm, Controller } from 'react-hook-form';
+import { AuthInput } from '@app/components/AuthInput';
+import { Button } from '@app/components/Button';
 
 const authSchema = yup.object().shape({
-  email: yup.string().email().required("Email is required"),
+  email: yup.string().email().required('Email is required'),
   password: yup
     .string()
-    .min(6, "Password must be at least 6 characters")
-    .required("Password is required"),
+    .min(6, 'Password must be at least 6 characters')
+    .required('Password is required'),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref("password"), null], "Passwords must match")
-    .required("Password confirmation is required"),
+    .oneOf([yup.ref('password'), null], 'Passwords must match')
+    .required('Password confirmation is required'),
 });
 
 // create account
@@ -30,13 +30,13 @@ export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
   } = useForm({
     resolver: yupResolver(authSchema),
     defaultValues: {
-      email: "",
-      password: "",
-      confirmPassword: "",
+      email: '',
+      password: '',
+      confirmPassword: '',
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     // const values = { ...data };
     // delete values.confirmPassword;
     signUp(data.email, data.password);

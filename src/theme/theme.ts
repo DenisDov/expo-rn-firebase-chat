@@ -1,13 +1,13 @@
-import { createTheme } from "@shopify/restyle";
-import tinycolor from "tinycolor2";
+import { createTheme } from '@shopify/restyle';
+import tinycolor from 'tinycolor2';
 
 const palette = {
-  black: "#0B0B0B",
-  white: "#F0F2F3",
-  blue: "#2f95dc",
+  black: '#0B0B0B',
+  white: '#F0F2F3',
+  blue: '#2f95dc',
   // gray: "#808080",
-  red: "#D9534F",
-  shadow: "#00000020",
+  red: '#D9534F',
+  shadow: '#00000020',
 };
 
 const theme = createTheme({
@@ -42,12 +42,12 @@ const theme = createTheme({
   },
   textVariants: {
     defaults: {
-      fontFamily: "GeistSans",
+      fontFamily: 'GeistSans',
       fontSize: 16,
-      color: "text",
+      color: 'text',
     },
     title: {
-      fontFamily: "GeistMono",
+      fontFamily: 'GeistMono',
       fontSize: 24,
     },
   },

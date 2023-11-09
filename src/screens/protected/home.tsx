@@ -1,6 +1,6 @@
-import { useAuth } from "@app/context/auth";
-import { Box, Text } from "@app/theme";
-import { ActivityIndicator, TouchableOpacity } from "react-native";
+import { useAuth } from '@app/context/auth';
+import { Box, Text } from '@app/theme';
+import { ActivityIndicator, TouchableOpacity } from 'react-native';
 
 export const HomeScreen = () => {
   const { user, logout, loading } = useAuth();

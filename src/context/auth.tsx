@@ -3,11 +3,10 @@ import React, {
   useEffect,
   useState,
   PropsWithChildren,
-} from "react";
+} from 'react';
+import { Alert } from 'react-native';
 
-import auth from "@react-native-firebase/auth";
-
-import { Alert } from "react-native";
+import auth from '@react-native-firebase/auth';
 
 interface User {
   uid: string;
@@ -28,13 +27,13 @@ interface ContextInterface {
 }
 
 const userInitialState = {
-  uid: "",
-  createdAt: "",
-  displayName: "",
-  lastLoginAt: "",
-  photoURL: "",
-  providerId: "",
-  email: "",
+  uid: '',
+  createdAt: '',
+  displayName: '',
+  lastLoginAt: '',
+  photoURL: '',
+  providerId: '',
+  email: '',
 };
 
 const contextInitialState: ContextInterface = {
@@ -46,27 +45,27 @@ const contextInitialState: ContextInterface = {
 };
 
 type Action =
-  | { type: "LOADING_START" }
-  | { type: "SET_USER"; payload: User }
-  | { type: "LOGOUT" };
+  | { type: 'LOADING_START' }
+  | { type: 'SET_USER'; payload: User }
+  | { type: 'LOGOUT' };
 
 const authReducer = (
-  state: Pick<ContextInterface, "loading" | "user">,
-  action: Action
+  state: Pick<ContextInterface, 'loading' | 'user'>,
+  action: Action,
 ) => {
   switch (action.type) {
-    case "LOADING_START":
+    case 'LOADING_START':
       return {
         ...state,
         loading: true,
       };
-    case "SET_USER":
+    case 'SET_USER':
       return {
         ...state,
         user: action.payload,
         loading: false,
       };
-    case "LOGOUT":
+    case 'LOGOUT':
       return {
         ...state,
         user: null,
@@ -85,7 +84,7 @@ export function useAuth(): ContextInterface {
   const context = React.useContext<ContextInterface>(AuthContext);
 
   if (context === undefined) {
-    throw new Error("useAuth must be used within a Provider");
+    throw new Error('useAuth must be used within a Provider');
   }
 
   return context;
@@ -96,23 +95,23 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [initialLoading, setInitialLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = auth().onAuthStateChanged((user) => {
+    const unsubscribe = auth().onAuthStateChanged(user => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         const dataWeCareAbout: User = {
           uid: user.uid,
-          displayName: user.providerData[0].displayName ?? "",
-          photoURL: user.providerData[0].photoURL ?? "",
+          displayName: user.providerData[0].displayName ?? '',
+          photoURL: user.providerData[0].photoURL ?? '',
           providerId: user.providerData[0].providerId,
-          email: user.providerData[0].email ?? "",
+          email: user.providerData[0].email ?? '',
           createdAt: user.metadata.creationTime!,
           lastLoginAt: user.metadata.lastSignInTime!,
         };
-        dispatch({ type: "SET_USER", payload: dataWeCareAbout });
+        dispatch({ type: 'SET_USER', payload: dataWeCareAbout });
       } else {
         // User is signed out
-        dispatch({ type: "LOGOUT" });
+        dispatch({ type: 'LOGOUT' });
       }
       setInitialLoading(false);
     });
@@ -122,30 +121,30 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
   const signUp = async (email: string, password: string) => {
     try {
-      dispatch({ type: "LOADING_START" });
+      dispatch({ type: 'LOADING_START' });
       await auth().createUserWithEmailAndPassword(email, password);
     } catch (err: any) {
       Alert.alert(err.message);
-      dispatch({ type: "LOGOUT" });
+      dispatch({ type: 'LOGOUT' });
     }
   };
 
   const signIn = async (email: string, password: string) => {
     try {
-      dispatch({ type: "LOADING_START" });
+      dispatch({ type: 'LOADING_START' });
       await auth().signInWithEmailAndPassword(email, password);
     } catch (err: any) {
       Alert.alert(err.message);
-      dispatch({ type: "LOGOUT" });
+      dispatch({ type: 'LOGOUT' });
     }
   };
 
   const logout = async () => {
     try {
-      dispatch({ type: "LOADING_START" });
+      dispatch({ type: 'LOADING_START' });
       await auth().signOut();
     } catch (err) {
-      console.log("err: ", err);
+      console.log('err: ', err);
     }
   };
 

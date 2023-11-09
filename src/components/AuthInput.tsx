@@ -1,8 +1,8 @@
-import { useTheme } from "@shopify/restyle";
-import React from "react";
-import { StyleSheet, TextInput } from "react-native";
+import { useTheme } from '@shopify/restyle';
+import React from 'react';
+import { StyleSheet, TextInput } from 'react-native';
 
-import { theme } from "@app/theme";
+import { theme } from '@app/theme';
 
 type Props = {
   onBlur: () => void;
@@ -35,7 +35,7 @@ export const AuthInput = ({
 
 const styles = StyleSheet.create({
   input: {
-    fontFamily: "GeistSans",
+    fontFamily: 'GeistSans',
     height: theme.spacing.xl,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: theme.colors.primary,
