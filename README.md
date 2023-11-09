@@ -1,3 +1,4 @@
-### RN Firebasae chat with expo-dev-client
+### RN Firebase chat with expo-dev-client
 
-- Email and password auth enabled
+- Firestore db for gifted chat
+- Email and password auth
