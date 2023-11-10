@@ -8,7 +8,7 @@ import { Box, Text, theme } from '@app/theme';
 
 type Props = {
   onPress: () => void;
-  title: string;
+  title?: string;
   isLoading?: boolean;
   icon?: React.ComponentProps<typeof Ionicons>['name'];
 };
@@ -45,9 +45,11 @@ export const Button = ({ onPress, title, icon, isLoading }: Props) => {
             {icon && (
               <Ionicons name={icon} size={24} color={theme.colors.btnText} />
             )}
-            <Text color="btnText" textTransform="uppercase">
-              {title}
-            </Text>
+            {title && (
+              <Text color="btnText" textTransform="uppercase">
+                {title}
+              </Text>
+            )}
           </Box>
         )}
       </Pressable>
@@ -61,6 +63,7 @@ const styles = StyleSheet.create({
     borderRadius: theme.borderRadii.s,
   },
   button: {
+    paddingHorizontal: theme.spacing.s,
     height: theme.spacing.xl,
     justifyContent: 'center',
     alignItems: 'center',
