@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 import React from 'react';
-import { ActivityIndicator, Image, Pressable, StyleSheet } from 'react-native';
+import { ActivityIndicator, Pressable, StyleSheet } from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
 
 import { Text, theme } from '@app/theme';
