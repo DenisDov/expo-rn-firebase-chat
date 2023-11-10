@@ -19,7 +19,7 @@ export const ChatScreen = () => {
           messages.push({
             _id: doc.data()._id,
             text: doc.data().text,
-            createdAt: new Date(),
+            createdAt: doc.data().createdAt.toDate(),
             user: doc.data().user,
           });
         });
