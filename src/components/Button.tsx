@@ -1,14 +1,16 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import * as Haptics from 'expo-haptics';
 import React from 'react';
 import { ActivityIndicator, Pressable, StyleSheet } from 'react-native';
 import { Shadow } from 'react-native-shadow-2';
 
-import { Text, theme } from '@app/theme';
+import { Box, Text, theme } from '@app/theme';
 
 type Props = {
   onPress: () => void;
   title: string;
   isLoading?: boolean;
+  icon?: React.ComponentProps<typeof Ionicons>['name'];
 };
 
 const RIPPLE_CONFIG = {
@@ -16,7 +18,7 @@ const RIPPLE_CONFIG = {
   borderless: true,
 };
 
-export const Button = ({ onPress, title, isLoading }: Props) => {
+export const Button = ({ onPress, title, icon, isLoading }: Props) => {
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     onPress();
@@ -39,7 +41,14 @@ export const Button = ({ onPress, title, isLoading }: Props) => {
         {isLoading ? (
           <ActivityIndicator color="white" />
         ) : (
-          <Text color="btnText">{title}</Text>
+          <Box flexDirection="row" alignItems="center" gap="s">
+            {icon && (
+              <Ionicons name={icon} size={24} color={theme.colors.btnText} />
+            )}
+            <Text color="btnText" textTransform="uppercase">
+              {title}
+            </Text>
+          </Box>
         )}
       </Pressable>
     </Shadow>
