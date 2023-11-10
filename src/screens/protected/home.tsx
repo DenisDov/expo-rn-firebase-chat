@@ -3,15 +3,12 @@ import { useLayoutEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
 
 import { Button } from '@app/components/Button';
-import { useAuth } from '@app/context/auth';
 import { HomeScreenProps } from '@app/navigation/types';
-import { Box, Text } from '@app/theme';
+import { Box } from '@app/theme';
 
 const AVATAR_SIZE = 30;
 
 export const HomeScreen = ({ navigation }: HomeScreenProps) => {
-  const { user, logout, loading } = useAuth();
-
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -32,20 +29,11 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
   }, [navigation]);
 
   return (
-    <Box flex={1} backgroundColor="background" padding="m" gap="m">
-      <Box>
-        <Text variant="title">PROTECTED HOME SCREEN</Text>
-        <Text>email: {user?.email}</Text>
-        <Text>providerId: {user?.providerId}</Text>
-      </Box>
-
-      <Button
-        title="Logout"
-        icon="exit-outline"
-        onPress={logout}
-        isLoading={loading}
-      />
-
+    <Box
+      flex={1}
+      backgroundColor="background"
+      padding="m"
+      justifyContent="center">
       <Button
         title="chat"
         icon="chatbox-outline"

@@ -43,7 +43,6 @@ const theme = createTheme({
   textVariants: {
     defaults: {
       fontFamily: 'GeistSans',
-      fontSize: 16,
       color: 'text',
     },
     title: {
