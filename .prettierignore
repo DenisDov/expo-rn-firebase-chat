@@ -1,3 +1,5 @@
-android/
-ios/
-google-services.json
+# Ignore everything
+/*
+
+# Except these files & folders
+!/src

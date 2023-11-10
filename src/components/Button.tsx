@@ -1,9 +1,9 @@
-import { Text } from '@app/theme';
-import { Shadow } from 'react-native-shadow-2';
-import React from 'react';
-import { ActivityIndicator, Pressable, StyleSheet, Image } from 'react-native';
 import * as Haptics from 'expo-haptics';
-import { theme } from '@app/theme';
+import React from 'react';
+import { ActivityIndicator, Image, Pressable, StyleSheet } from 'react-native';
+import { Shadow } from 'react-native-shadow-2';
+
+import { Text, theme } from '@app/theme';
 
 type Props = {
   onPress: () => void;

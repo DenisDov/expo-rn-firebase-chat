@@ -1,7 +1,7 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
-import Ionicons from '@expo/vector-icons/Ionicons';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();

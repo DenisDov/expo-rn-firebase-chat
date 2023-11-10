@@ -1,15 +1,14 @@
-import * as SplashScreen from 'expo-splash-screen';
-
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-
-import { HomeScreen } from '@app/screens/protected/home';
-
-import { SignUpScreen } from '@app/screens/public/sign_up';
-import { SignInScreen } from '@app/screens/public/sign_in';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
-import { useLoadedAssets } from '@app/hooks/useLoadedAssets';
+
 import { useAuth } from '@app/context/auth';
+import { useLoadedAssets } from '@app/hooks/useLoadedAssets';
+import { HomeScreen } from '@app/screens/protected/home';
+import { SignInScreen } from '@app/screens/public/sign_in';
+import { SignUpScreen } from '@app/screens/public/sign_up';
+
 import { ProtectedStackParamList, PublicStackParamList } from './types';
 
 const ProtectedStack = createNativeStackNavigator<ProtectedStackParamList>();

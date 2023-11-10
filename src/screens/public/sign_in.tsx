@@ -1,12 +1,13 @@
-import { useAuth } from '@app/context/auth';
-import { Box, Text } from '@app/theme';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { Controller, useForm } from 'react-hook-form';
 import { Pressable } from 'react-native';
-import { SignInScreenProps } from '@app/navigation/types';
-import { useForm, Controller } from 'react-hook-form';
+import * as yup from 'yup';
+
 import { AuthInput } from '@app/components/AuthInput';
 import { Button } from '@app/components/Button';
+import { useAuth } from '@app/context/auth';
+import { SignInScreenProps } from '@app/navigation/types';
+import { Box, Text } from '@app/theme';
 
 const authSchema = yup.object().shape({
   email: yup.string().email().required('Email is required'),

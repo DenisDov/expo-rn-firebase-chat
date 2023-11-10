@@ -1,11 +1,12 @@
-import { useAuth } from '@app/context/auth';
-import { Box, Text } from '@app/theme';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { SignUpScreenProps } from '@app/navigation/types';
-import { useForm, Controller } from 'react-hook-form';
+
 import { AuthInput } from '@app/components/AuthInput';
 import { Button } from '@app/components/Button';
+import { useAuth } from '@app/context/auth';
+import { SignUpScreenProps } from '@app/navigation/types';
+import { Box, Text } from '@app/theme';
 
 const authSchema = yup.object().shape({
   email: yup.string().email().required('Email is required'),
@@ -15,7 +16,7 @@ const authSchema = yup.object().shape({
     .required('Password is required'),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref('password'), null], 'Passwords must match')
+    .oneOf([yup.ref('password')], 'Passwords must match')
     .required('Password confirmation is required'),
 });
 
@@ -37,8 +38,6 @@ export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
   });
 
   const onSubmit = data => {
-    // const values = { ...data };
-    // delete values.confirmPassword;
     signUp(data.email, data.password);
   };
 

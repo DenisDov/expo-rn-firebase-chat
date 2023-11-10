@@ -5,5 +5,10 @@
   "bracketSpacing": true,
   "singleQuote": true,
   "trailingComma": "all",
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+  
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": ["^@app/(.*)$", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }
