@@ -51,7 +51,7 @@ export const Button = ({ onPress, title, icon, isLoading }: Props) => {
               <Ionicons name={icon} size={24} color={theme.colors.btnText} />
             )}
             {title && (
-              <Text color="btnText" textTransform="uppercase">
+              <Text color="btnText" textTransform="capitalize" variant="btn">
                 {title}
               </Text>
             )}

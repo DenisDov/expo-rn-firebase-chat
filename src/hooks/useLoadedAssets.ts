@@ -10,6 +10,7 @@ export function useLoadedAssets() {
   const [loaded, error] = useFonts({
     GeistRegular: require('../assets/fonts/Geist-Regular.otf'),
     GeistBold: require('../assets/fonts/Geist-Bold.otf'),
+    GeistSemiBold: require('../assets/fonts/Geist-SemiBold.otf'),
     ...Ionicons.font,
   });
 

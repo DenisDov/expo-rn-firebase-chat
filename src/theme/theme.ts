@@ -4,7 +4,7 @@ import tinycolor from 'tinycolor2';
 const palette = {
   black: '#0B0B0B',
   white: '#F0F2F3',
-  blue: '#2f95dc',
+  blue: '#027aff',
   // gray: "#808080",
   red: '#D9534F',
   shadow: '#00000020',
@@ -49,6 +49,9 @@ const theme = createTheme({
     title: {
       fontFamily: 'GeistBold',
       fontSize: 34,
+    },
+    btn: {
+      fontFamily: 'GeistSemiBold',
     },
   },
 });
