@@ -19,3 +19,8 @@ export type SignUpScreenProps = NativeStackScreenProps<
   PublicStackParamList,
   'SignUp'
 >;
+
+export type HomeScreenProps = NativeStackScreenProps<
+  ProtectedStackParamList,
+  'Chat'
+>;
