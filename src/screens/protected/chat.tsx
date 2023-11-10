@@ -14,17 +14,18 @@ export const ChatScreen = () => {
     const unsubscribe = chatsCollection.onSnapshot(q => {
       const messages: any = [];
 
-      q.forEach(doc => {
-        console.log('doc: ', doc.data());
-        messages.push({
-          _id: doc.data()._id,
-          text: doc.data().text,
-          createdAt: doc.data().createdAt,
-          user: doc.data().user,
+      if (q.size > 0) {
+        q.forEach(doc => {
+          messages.push({
+            _id: doc.data()._id,
+            text: doc.data().text,
+            createdAt: new Date(),
+            user: doc.data().user,
+          });
         });
-      });
 
-      setMessages(messages);
+        setMessages(messages);
+      }
     });
 
     return unsubscribe;
@@ -51,7 +52,7 @@ export const ChatScreen = () => {
       showUserAvatar={false}
       onSend={messages => onSend(messages)}
       user={{
-        _id: user?.uid,
+        _id: user?.uid as string,
       }}
     />
   );
