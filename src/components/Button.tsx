@@ -1,4 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useTheme } from '@shopify/restyle';
 import * as Haptics from 'expo-haptics';
 import React from 'react';
 import { ActivityIndicator, Pressable, StyleSheet } from 'react-native';
@@ -19,6 +20,7 @@ const RIPPLE_CONFIG = {
 };
 
 export const Button = ({ onPress, title, icon, isLoading }: Props) => {
+  const theme = useTheme();
   const handlePress = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     onPress();
@@ -36,7 +38,10 @@ export const Button = ({ onPress, title, icon, isLoading }: Props) => {
         android_ripple={RIPPLE_CONFIG}
         style={({ pressed }) => [
           styles.button,
-          { opacity: pressed ? 0.7 : 1 },
+          {
+            backgroundColor: theme.colors.primary,
+            opacity: pressed ? 0.7 : 1,
+          },
         ]}>
         {isLoading ? (
           <ActivityIndicator color="white" />
@@ -67,7 +72,6 @@ const styles = StyleSheet.create({
     height: theme.spacing.xl,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.colors.primary,
     borderRadius: theme.borderRadii.s,
   },
 });

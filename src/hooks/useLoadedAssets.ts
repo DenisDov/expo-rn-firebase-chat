@@ -8,8 +8,8 @@ SplashScreen.preventAutoHideAsync();
 
 export function useLoadedAssets() {
   const [loaded, error] = useFonts({
-    GeistSans: require('../assets/fonts/Geist-Regular.otf'),
-    GeistMono: require('../assets/fonts/GeistMono-Regular.otf'),
+    GeistRegular: require('../assets/fonts/Geist-Regular.otf'),
+    GeistBold: require('../assets/fonts/Geist-Bold.otf'),
     ...Ionicons.font,
   });
 

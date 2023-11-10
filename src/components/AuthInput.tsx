@@ -35,7 +35,7 @@ export const AuthInput = ({
 
 const styles = StyleSheet.create({
   input: {
-    fontFamily: 'GeistSans',
+    fontFamily: 'GeistRegular',
     height: theme.spacing.xl,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: theme.colors.primary,

@@ -42,12 +42,13 @@ const theme = createTheme({
   },
   textVariants: {
     defaults: {
-      fontFamily: 'GeistSans',
+      fontSize: 17,
+      fontFamily: 'GeistRegular',
       color: 'text',
     },
     title: {
-      fontFamily: 'GeistMono',
-      fontSize: 24,
+      fontFamily: 'GeistBold',
+      fontSize: 34,
     },
   },
 });
