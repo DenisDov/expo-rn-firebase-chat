@@ -3,6 +3,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 export type ProtectedStackParamList = {
   Home: undefined;
   Chat: undefined;
+  Profile: undefined;
 };
 
 export type PublicStackParamList = {
@@ -22,5 +23,5 @@ export type SignUpScreenProps = NativeStackScreenProps<
 
 export type HomeScreenProps = NativeStackScreenProps<
   ProtectedStackParamList,
-  'Chat'
+  'Home'
 >;

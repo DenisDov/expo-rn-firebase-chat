@@ -7,6 +7,7 @@ import { useAuth } from '@app/context/auth';
 import { useLoadedAssets } from '@app/hooks/useLoadedAssets';
 import { ChatScreen } from '@app/screens/protected/chat';
 import { HomeScreen } from '@app/screens/protected/home';
+import { ProfileScreen } from '@app/screens/protected/profile';
 import { SignInScreen } from '@app/screens/public/sign_in';
 import { SignUpScreen } from '@app/screens/public/sign_up';
 
@@ -22,6 +23,13 @@ function RootNavigator() {
     <ProtectedStack.Navigator>
       <ProtectedStack.Screen name="Home" component={HomeScreen} />
       <ProtectedStack.Screen name="Chat" component={ChatScreen} />
+      <ProtectedStack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          presentation: 'modal',
+        }}
+      />
     </ProtectedStack.Navigator>
   ) : (
     <PublicStack.Navigator>
