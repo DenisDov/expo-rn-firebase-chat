@@ -94,7 +94,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [initialLoading, setInitialLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = auth().onAuthStateChanged(user => {
+    const unsubscribe = auth().onUserChanged(user => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
@@ -148,7 +148,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   };
 
   const value = {
-    dispatch,
     loading: authState.loading,
     user: authState.user,
     signUp, // register

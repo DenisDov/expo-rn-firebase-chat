@@ -8,7 +8,7 @@ import { useAuth } from '@app/context/auth';
 import { Box, Text } from '@app/theme';
 
 export const ProfileScreen = () => {
-  const { user, logout, loading, dispatch } = useAuth();
+  const { user, logout, loading } = useAuth();
 
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
@@ -27,10 +27,6 @@ export const ProfileScreen = () => {
 
       try {
         await auth().currentUser!.updateProfile(update);
-        dispatch({
-          type: 'SET_USER',
-          payload: { ...user, ...update },
-        });
       } catch (error) {
         console.error('Error updating profile:', error);
       }
