@@ -3,12 +3,15 @@ import { useLayoutEffect } from 'react';
 import { TouchableOpacity } from 'react-native';
 
 import { Button } from '@app/components/Button';
+import { useAuth } from '@app/context/auth';
 import { HomeScreenProps } from '@app/navigation/types';
 import { Box } from '@app/theme';
 
 const AVATAR_SIZE = 30;
 
 export const HomeScreen = ({ navigation }: HomeScreenProps) => {
+  const { user } = useAuth();
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -19,14 +22,15 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
               height: AVATAR_SIZE,
               borderRadius: AVATAR_SIZE / 2,
             }}
-            source="https://picsum.photos/seed/696/3000/2000"
-            contentFit="cover"
-            transition={1000}
+            source={
+              user?.photoURL || 'https://reactnative.dev/img/tiny_logo.png'
+            }
+            contentFit="contain"
           />
         </TouchableOpacity>
       ),
     });
-  }, [navigation]);
+  }, [navigation, user?.photoURL]);
 
   return (
     <Box

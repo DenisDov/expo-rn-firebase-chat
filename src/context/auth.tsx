@@ -148,6 +148,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   };
 
   const value = {
+    dispatch,
     loading: authState.loading,
     user: authState.user,
     signUp, // register
