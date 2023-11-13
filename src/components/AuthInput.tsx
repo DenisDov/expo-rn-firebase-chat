@@ -1,22 +1,23 @@
 import { useTheme } from '@shopify/restyle';
 import React from 'react';
-import { StyleSheet, TextInput } from 'react-native';
+import { StyleSheet, TextInput, TextInputProps } from 'react-native';
 
 import { theme } from '@app/theme';
 
-type Props = {
+type AuthInputProps = {
   onBlur: () => void;
-  onChangeText: () => void;
+  onChangeText: (text: string) => void;
   value: string;
   placeholder: string;
-};
+} & TextInputProps;
 
 export const AuthInput = ({
   onBlur,
   onChangeText,
   value,
   placeholder,
-}: Props) => {
+  ...props
+}: AuthInputProps) => {
   const theme = useTheme();
   return (
     <TextInput
@@ -29,6 +30,7 @@ export const AuthInput = ({
       autoCapitalize="none"
       autoCorrect={false}
       style={[styles.input, { color: theme.colors.text }]}
+      {...props}
     />
   );
 };

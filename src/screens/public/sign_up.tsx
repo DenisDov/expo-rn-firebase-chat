@@ -57,6 +57,7 @@ export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
+                keyboardType="email-address"
               />
             )}
             name="email"
@@ -73,6 +74,7 @@ export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
+                secureTextEntry
               />
             )}
             name="password"

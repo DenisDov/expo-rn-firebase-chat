@@ -53,6 +53,7 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
+                keyboardType="email-address"
               />
             )}
             name="email"
@@ -69,6 +70,7 @@ export const SignInScreen = ({ navigation }: SignInScreenProps) => {
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
+                secureTextEntry
               />
             )}
             name="password"
