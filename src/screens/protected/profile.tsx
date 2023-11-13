@@ -47,7 +47,8 @@ export const ProfileScreen = () => {
             width: 200,
             height: 200,
           }}
-          source={user?.photoURL || 'https://reactnative.dev/img/tiny_logo.png'}
+          source={user?.photoURL}
+          placeholder="https://picsum.photos/seed/696/60/60"
           contentFit="contain"
         />
 

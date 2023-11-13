@@ -22,9 +22,8 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
               height: AVATAR_SIZE,
               borderRadius: AVATAR_SIZE / 2,
             }}
-            source={
-              user?.photoURL || 'https://reactnative.dev/img/tiny_logo.png'
-            }
+            source={user?.photoURL}
+            placeholder="https://picsum.photos/seed/696/60/60"
             contentFit="contain"
           />
         </TouchableOpacity>
