@@ -11,7 +11,7 @@ import { Box, Text } from '@app/theme';
 export const ProfileScreen = () => {
   const { user, logout, loading } = useAuth();
 
-  const pickImage = async () => {
+  const pickImageAndUpload = async () => {
     // No permissions request is necessary for launching the image library
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -35,6 +35,7 @@ export const ProfileScreen = () => {
         );
       });
 
+      // update user avatar
       task.then(async () => {
         console.log('Image uploaded to the bucket!');
 
@@ -68,7 +69,7 @@ export const ProfileScreen = () => {
           contentFit="contain"
         />
 
-        <Button title="pick image" onPress={pickImage} />
+        <Button title="Change avatar" onPress={pickImageAndUpload} />
       </Box>
 
       <Button
