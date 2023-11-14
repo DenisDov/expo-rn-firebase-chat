@@ -69,6 +69,7 @@ export const ProfileScreen = () => {
           source={user?.photoURL}
           placeholder="https://picsum.photos/seed/696/60/60"
           contentFit="contain"
+          transition={300}
         />
 
         <Button title="Change avatar" onPress={pickImageAndUpload} />

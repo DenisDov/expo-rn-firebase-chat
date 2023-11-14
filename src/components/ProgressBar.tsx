@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Animated, {
-  Easing,
   useAnimatedStyle,
   useDerivedValue,
   withTiming,
@@ -37,5 +36,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#027aff',
   },
 });
-
-export default ProgressBar;
