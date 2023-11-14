@@ -53,6 +53,7 @@ export const ChatScreen = () => {
       onSend={messages => onSend(messages)}
       user={{
         _id: user?.uid as string,
+        avatar: user?.photoURL || 'https://i.pravatar.cc/300',
       }}
     />
   );
