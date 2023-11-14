@@ -1,4 +1,5 @@
 import auth from '@react-native-firebase/auth';
+import storage from '@react-native-firebase/storage';
 import { Image } from 'expo-image';
 import * as ImagePicker from 'expo-image-picker';
 import React from 'react';
@@ -20,16 +21,31 @@ export const ProfileScreen = () => {
     });
 
     if (!result.canceled) {
-      const uri = result.assets[0].uri;
-      const update = {
-        photoURL: uri,
-      };
+      // create bucket storage reference to not yet existing image
+      const storageRef = storage().ref('avatars/' + user?.uid);
+      // path to existing file on filesystem
+      const pathToFile = result.assets[0].uri;
+      // uploads file
+      const task = storageRef.putFile(pathToFile);
 
-      try {
-        await auth().currentUser!.updateProfile(update);
-      } catch (error) {
-        console.error('Error updating profile:', error);
-      }
+      // track upload progress
+      task.on('state_changed', taskSnapshot => {
+        console.log(
+          `${taskSnapshot.bytesTransferred} transferred out of ${taskSnapshot.totalBytes}`,
+        );
+      });
+
+      task.then(async () => {
+        console.log('Image uploaded to the bucket!');
+
+        const downloadURL = await storage()
+          .ref('avatars/' + user?.uid)
+          .getDownloadURL();
+
+        await auth().currentUser!.updateProfile({
+          photoURL: downloadURL,
+        });
+      });
     }
   };
 
