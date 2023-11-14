@@ -24,7 +24,7 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
             }}
             source={user?.photoURL}
             placeholder="https://picsum.photos/seed/696/60/60"
-            contentFit="contain"
+            contentFit="fill"
           />
         </TouchableOpacity>
       ),
