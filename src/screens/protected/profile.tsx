@@ -2,14 +2,16 @@ import auth from '@react-native-firebase/auth';
 import storage from '@react-native-firebase/storage';
 import { Image } from 'expo-image';
 import * as ImagePicker from 'expo-image-picker';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Button } from '@app/components/Button';
+import { ProgressBar } from '@app/components/ProgressBar';
 import { useAuth } from '@app/context/auth';
 import { Box, Text } from '@app/theme';
 
 export const ProfileScreen = () => {
   const { user, logout, loading } = useAuth();
+  const [uploadProgress, setUploadProgress] = useState(0);
 
   const pickImageAndUpload = async () => {
     // No permissions request is necessary for launching the image library
@@ -30,9 +32,9 @@ export const ProfileScreen = () => {
 
       // track upload progress
       task.on('state_changed', taskSnapshot => {
-        console.log(
-          `${taskSnapshot.bytesTransferred} transferred out of ${taskSnapshot.totalBytes}`,
-        );
+        const progress =
+          (taskSnapshot.bytesTransferred / taskSnapshot.totalBytes) * 100;
+        setUploadProgress(progress);
       });
 
       // update user avatar
@@ -70,6 +72,12 @@ export const ProfileScreen = () => {
         />
 
         <Button title="Change avatar" onPress={pickImageAndUpload} />
+        {uploadProgress > 0 && uploadProgress < 100 && (
+          <Box marginVertical="m">
+            <ProgressBar progress={uploadProgress} />
+            <Text>{uploadProgress.toFixed() + '%'}</Text>
+          </Box>
+        )}
       </Box>
 
       <Button
