@@ -133,6 +133,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         .getDownloadURL();
 
       await userCredential.user.updateProfile({
+        displayName: userCredential.user.email,
         photoURL: downloadURL,
       });
     } catch (err: any) {

@@ -1,10 +1,6 @@
 import 'expo-dev-client';
 import { StatusBar } from 'expo-status-bar';
 import {
-  Appearance,
-  StyleSheet,
-  Text,
-  View,
   useColorScheme,
 } from 'react-native';
 import { ThemeProvider } from '@shopify/restyle';

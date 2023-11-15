@@ -57,6 +57,7 @@ export const ProfileScreen = () => {
       <Box>
         <Text variant="title">PROTECTED PAGE</Text>
         <Text>email: {user?.email}</Text>
+        <Text>displayName: {user?.displayName}</Text>
         <Text>providerId: {user?.providerId}</Text>
       </Box>
 
