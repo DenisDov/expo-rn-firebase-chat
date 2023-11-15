@@ -101,7 +101,8 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         const dataWeCareAbout: User = {
           uid: user.uid,
           displayName: user.providerData[0].displayName ?? '',
-          photoURL: user.providerData[0].photoURL ?? '',
+          photoURL:
+            user.providerData[0].photoURL ?? 'https://picsum.photos/200',
           providerId: user.providerData[0].providerId,
           email: user.providerData[0].email ?? '',
           createdAt: user.metadata.creationTime!,

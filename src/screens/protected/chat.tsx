@@ -1,5 +1,6 @@
 import firestore from '@react-native-firebase/firestore';
 import { useCallback, useEffect, useState } from 'react';
+import { ActivityIndicator } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 
 import { useAuth } from '@app/context/auth';
@@ -9,6 +10,7 @@ const chatsCollection = firestore().collection('Chats');
 export const ChatScreen = () => {
   const { user } = useAuth();
   const [messages, setMessages] = useState([]);
+  console.log('messages: ', messages);
 
   useEffect(() => {
     const unsubscribe = chatsCollection
@@ -49,10 +51,16 @@ export const ChatScreen = () => {
 
   return (
     <GiftedChat
+      renderLoading={() => <ActivityIndicator size="large" color="#0000ff" />}
       messages={messages}
       onSend={messages => onSend(messages)}
       user={{
         _id: user?.uid as string,
+        avatar: user?.photoURL,
+      }}
+      showUserAvatar={!!user?.photoURL}
+      messagesContainerStyle={{
+        backgroundColor: '#fff',
       }}
     />
   );

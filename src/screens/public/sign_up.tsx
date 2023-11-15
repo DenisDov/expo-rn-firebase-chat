@@ -93,6 +93,7 @@ export const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
+                secureTextEntry
               />
             )}
             name="confirmPassword"
