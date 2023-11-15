@@ -6,8 +6,6 @@ export function usePushNotifications() {
   useEffect(() => {
     const registerAppWithFCM = async () => {
       await messaging().registerDeviceForRemoteMessages();
-      const token = await messaging().getToken();
-      console.log('token: ', token);
     };
 
     const requestNotificationPermission = async () => {
@@ -44,17 +42,19 @@ export function usePushNotifications() {
       }
     };
 
-    // Register background handler
-    messaging().setBackgroundMessageHandler(async remoteMessage => {
-      console.log('Message handled in the background!', remoteMessage);
-    });
+    const setBackgroundMessageHandler = () => {
+      return messaging().setBackgroundMessageHandler(async remoteMessage => {
+        console.log('Message handled in the background!', remoteMessage);
+      });
+    };
+
+    registerAppWithFCM();
+    requestNotificationPermission();
+    setBackgroundMessageHandler();
 
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
     });
-
-    requestNotificationPermission();
-    registerAppWithFCM();
 
     return unsubscribe;
   }, []);

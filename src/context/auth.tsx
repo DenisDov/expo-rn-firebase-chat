@@ -1,4 +1,6 @@
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import messaging from '@react-native-firebase/messaging';
 import storage from '@react-native-firebase/storage';
 import React, {
   PropsWithChildren,
@@ -136,6 +138,14 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         displayName: userCredential.user.email,
         photoURL: downloadURL,
       });
+
+      // store FCM token in Firestore DB
+      const token = await messaging().getToken();
+
+      firestore()
+        .collection('fcmTokens')
+        .doc(userCredential?.user.uid)
+        .set({ token });
     } catch (err: any) {
       Alert.alert(err.message);
       dispatch({ type: 'LOGOUT' });
