@@ -10,7 +10,6 @@ const chatsCollection = firestore().collection('Chats');
 export const ChatScreen = () => {
   const { user } = useAuth();
   const [messages, setMessages] = useState([]);
-  console.log('messages: ', messages);
 
   useEffect(() => {
     const unsubscribe = chatsCollection
