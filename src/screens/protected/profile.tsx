@@ -67,7 +67,6 @@ export const ProfileScreen = () => {
             height: 200,
           }}
           source={user?.photoURL}
-          placeholder="https://picsum.photos/seed/696/60/60"
           contentFit="contain"
           transition={300}
         />

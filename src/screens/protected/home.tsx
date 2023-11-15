@@ -23,7 +23,6 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
               borderRadius: AVATAR_SIZE / 2,
             }}
             source={user?.photoURL}
-            placeholder="https://picsum.photos/seed/696/60/60"
             contentFit="fill"
           />
         </TouchableOpacity>

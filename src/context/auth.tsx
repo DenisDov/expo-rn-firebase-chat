@@ -1,4 +1,5 @@
 import auth from '@react-native-firebase/auth';
+import storage from '@react-native-firebase/storage';
 import React, {
   PropsWithChildren,
   useEffect,
@@ -101,8 +102,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         const dataWeCareAbout: User = {
           uid: user.uid,
           displayName: user.providerData[0].displayName ?? '',
-          photoURL:
-            user.providerData[0].photoURL ?? 'https://picsum.photos/200',
+          photoURL: user.providerData[0].photoURL ?? '',
           providerId: user.providerData[0].providerId,
           email: user.providerData[0].email ?? '',
           createdAt: user.metadata.creationTime!,
@@ -122,7 +122,19 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   const signUp = async (email: string, password: string) => {
     try {
       dispatch({ type: 'LOADING_START' });
-      await auth().createUserWithEmailAndPassword(email, password);
+      const userCredential = await auth().createUserWithEmailAndPassword(
+        email,
+        password,
+      );
+
+      // Update user profile with default photo URL
+      const downloadURL = await storage()
+        .ref('avatars/dummy-avatar.jpg')
+        .getDownloadURL();
+
+      await userCredential.user.updateProfile({
+        photoURL: downloadURL,
+      });
     } catch (err: any) {
       Alert.alert(err.message);
       dispatch({ type: 'LOGOUT' });
