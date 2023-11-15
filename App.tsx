@@ -12,8 +12,10 @@ import {
 } from 'react-native-safe-area-context';
 import Navigation from '@app/navigation';
 import { AuthProvider } from '@app/context/auth';
+import { usePushNotifications } from '@app/hooks/usePushNotifications';
 
 export default function App() {
+  usePushNotifications();
   const colorScheme = useColorScheme();
   const darkMode = colorScheme === 'dark';
   return (

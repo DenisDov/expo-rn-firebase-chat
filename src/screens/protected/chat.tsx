@@ -55,12 +55,14 @@ export const ChatScreen = () => {
       onSend={messages => onSend(messages)}
       user={{
         _id: user?.uid as string,
+        name: user?.displayName,
         avatar: user?.photoURL,
       }}
       showUserAvatar={!!user?.photoURL}
       messagesContainerStyle={{
         backgroundColor: '#fff',
       }}
+      renderUsernameOnMessage
     />
   );
 };
