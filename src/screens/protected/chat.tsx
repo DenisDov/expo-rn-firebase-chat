@@ -5,11 +5,11 @@ import { GiftedChat } from 'react-native-gifted-chat';
 
 import { useAuth } from '@app/context/auth';
 
-const chatsCollection = firestore().collection('Chats');
-
 export const ChatScreen = () => {
   const { user } = useAuth();
   const [messages, setMessages] = useState([]);
+
+  const chatsCollection = firestore().collection('Chats');
 
   useEffect(() => {
     const unsubscribe = chatsCollection
