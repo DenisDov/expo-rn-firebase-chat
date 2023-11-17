@@ -59,9 +59,6 @@ export const ChatScreen = () => {
         avatar: user?.photoURL,
       }}
       showUserAvatar={!!user?.photoURL}
-      messagesContainerStyle={{
-        backgroundColor: '#fff',
-      }}
       renderUsernameOnMessage
     />
   );

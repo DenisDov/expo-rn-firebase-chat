@@ -4,13 +4,19 @@ import { TouchableOpacity } from 'react-native';
 
 import { Button } from '@app/components/Button';
 import { useAuth } from '@app/context/auth';
+import { useAppState } from '@app/hooks/useAppState';
 import { HomeScreenProps } from '@app/navigation/types';
-import { Box } from '@app/theme';
+import { Box, Text } from '@app/theme';
+import { sendFcmTokenToFirestore } from '@app/utils/fcmToken';
 
 const AVATAR_SIZE = 30;
 
 export const HomeScreen = ({ navigation }: HomeScreenProps) => {
   const { user } = useAuth();
+
+  const { appState } = useAppState({
+    onForeground: () => sendFcmTokenToFirestore(user?.uid as string),
+  });
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -41,6 +47,7 @@ export const HomeScreen = ({ navigation }: HomeScreenProps) => {
         icon="chatbox-outline"
         onPress={() => navigation.navigate('Chat')}
       />
+      <Text>App State is: {appState}</Text>
     </Box>
   );
 };
